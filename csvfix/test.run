@@ -1,0 +1,10 @@
+#
+# Set up my database for alberta boys and girls names 
+#
+csvfix.sh Boys
+\rm -rf /Users/rbo/Desktop/rdev/babydb/alberta/boys
+mv final /Users/rbo/Desktop/rdev/babydb/alberta/boys
+
+csvfix.sh Girls 
+\rm -rf /Users/rbo/Desktop/rdev/babydb/alberta/girls
+mv final /Users/rbo/Desktop/rdev/babydb/alberta/girls
