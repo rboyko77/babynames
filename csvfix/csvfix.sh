@@ -45,6 +45,7 @@ do
 	# Yes, these can exist in the data I pull from the government :(
 	tr '[:upper:]' '[:lower:]' < tmp3 > tmp4 
 
+
 	# Now we have add to add the columns where the names are the same
 	awk 'BEGIN { FS = "," } {
 		arr[$2]+=$1} END {for (i in arr) {print arr[i]",",i}}
@@ -54,11 +55,13 @@ do
 	sort -u -t',' -k2,2 tmp5 > tmp6
 	echo "Freq, Name" | cat - tmp6 > tmp7
 	
+	# remove any whitespace that may have snuck in.
+	sed 's/ //g' tmp7 > tmp8 
 	# 
-	mv tmp7 final/`basename $i`
+	mv tmp8 final/`basename $i`
 
 done
 
-\rm -rf tmp1 tmp2 tmp2.bak tmp3 tmp4 tmp5 tmp6
+\rm -rf tmp1 tmp2 tmp2.bak tmp3 tmp4 tmp5 tmp6 tmp7
 
 exit 0
